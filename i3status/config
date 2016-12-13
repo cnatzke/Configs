@@ -1,0 +1,81 @@
+general {
+    output_format = "i3bar" 
+    separator = " "
+    interval = 10
+    color_good = "#FFFFFF"
+}
+
+order += "wireless wlp3s0"
+#order += "ethernet enp1s0f0"
+order += "volume master"
+#order += "disk /"
+order += "disk /home"
+order += "cpu_usage 0"
+#order += "battery 0"
+order += "tztime berlin1"
+order += "tztime berlin2"
+
+wireless wlp3s0 {
+    format_up = " %quality"
+    format_down = ""
+}
+
+ethernet enp1s0f0 {
+            format_up = "E: %ip (%speed)"
+            format_down = "E: down"
+}
+
+volume master {
+    format = " %volume" 
+    format_muted = ""
+    device = "default"
+    mixer = "Master"
+    mixer_idx = 0
+}
+
+
+disk "/" {
+    format = " %free"
+}
+
+disk "/home" {
+    format = " %free"
+}
+
+cpu_temperature 0 {
+    format = " %degrees"
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp1_input"
+}
+
+battery 0 {
+    last_full_capacity = true
+    hide_seconds = true
+    integer_battery_capacity = true
+    format = "%status %percentage"
+    format_down = "No battery"
+    status_chr = ""
+    status_bat = ""
+    status_full = ""
+    path = "/sys/class/power_supply/BAT0/uevent"
+    low_threshold = 20
+    threshold_type = percentage
+}
+
+tztime denver1 { 
+    format = " %m-%d"
+    timezone = "America/Denver"
+}
+
+tztime denver2 { 
+    format = " %l:%M"
+    timezone = "America/Denver"
+}
+tztime berlin1 { 
+    format = " %m-%d"
+    timezone = "Europe/Berlin"
+}
+
+tztime berlin2 { 
+    format = " %l:%M"
+    timezone = "Europe/Berlin"
+}
