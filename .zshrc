@@ -23,5 +23,7 @@ alias bright="sudo tee /sys/class/backlight/radeon_bl0/brightness <<< 100"
 alias rt="root -l"
 #Connects to eduroam
 alias eduroam="/home/connor/.eduroam/eduroam.sh"
+#Start-up script
+alias strt="~/Programs/startup.sh"
 
 PATH="$PATH:$HOME/bin"
