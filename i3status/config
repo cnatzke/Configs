@@ -9,15 +9,15 @@ order += "wireless wlp3s0"
 #order += "ethernet enp1s0f0"
 order += "volume master"
 #order += "disk /"
-order += "disk /home"
-order += "cpu_usage 0"
+#order += "disk /home"
+order += "cpu_usage"
 #order += "battery 0"
-order += "tztime vancouver1"
-order += "tztime local"
+order += "tztime local1"
+order += "tztime local2"
 
 wireless wlp3s0 {
-    format_up = " %quality"
-    format_down = ""
+    format_up = "☢%quality at %essid, %bitrate| %ip"
+    format_down = "wifi down"
 }
 
 ethernet enp1s0f0 {
@@ -26,8 +26,8 @@ ethernet enp1s0f0 {
 }
 
 volume master {
-    format = " %volume" 
-    format_muted = ""
+    format = "♬ %volume" 
+    format_muted = ""
     device = "default"
     mixer = "Master"
     mixer_idx = 0
@@ -40,6 +40,10 @@ disk "/" {
 
 disk "/home" {
     format = " %free"
+}
+
+cpu_usage {
+    format = "cpu %usage"
 }
 
 cpu_temperature 0 {
@@ -62,7 +66,7 @@ battery 0 {
 }
 
 tztime denver1 { 
-    format = " %m-%d"
+    format = " %m-%d"
     timezone = "America/Denver"
 }
 
@@ -79,15 +83,9 @@ tztime berlin2 {
     format = " %l:%M"
     timezone = "Europe/Berlin"
 }
-tztime vancouver1 { 
-    format = " %m-%d"
-    timezone = "America/Vancouver"
+tztime local1 { 
+    format = "%m-%d"
 }
-
-tztime vancouver2 { 
-    format = " %l:%M"
-    timezone = "America/Vancouver"
-}
-tztime local { 
-    format = " %l:%M"
+tztime local2 { 
+    format = "%l:%M"
 }
